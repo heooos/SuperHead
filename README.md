@@ -28,7 +28,7 @@
 
 1.Python2.7环境
 
-2.tesseract引擎安装(可以参考这篇文章：http://blog.csdn.net/a349458532/article/details/51490291 别忘记环境变量配置)
+2.tesseract引擎安装(可以参考[这篇文章](http://blog.csdn.net/a349458532/article/details/51490291 ),别忘记环境变量配置)
 
 3.pytesseract库(使用pip直接安装)
 
