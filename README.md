@@ -44,6 +44,12 @@
 
 4.游戏开始时有321~倒计时  别运行早了。
 
+5.python3.X版本将start.py中的print函数改一下 空格改为()就行
+
+```
+print "输入内容"   ===》   print("输入内容")
+```
+
 # 其他
 
 该项目参考[百万英雄](https://github.com/wuditken/MillionHeroes)部分代码。项目仅供Python学习，切勿做其他伤天害理之事~  
