@@ -28,11 +28,21 @@
 
 1.Python2.7环境
 
-2.tesseract引擎安装(可以参考[这篇文章](http://blog.csdn.net/a349458532/article/details/51490291 ),别忘记环境变量配置)
+2.tesseract引擎安装(可以参考[这篇文章](http://blog.csdn.net/a349458532/article/details/51490291 ),别忘记环境变量配置)(mac平台通过brew install tesseract安装)
 
 3.pytesseract库(使用pip直接安装)
 
-4.直接运行项目中start.py即可~
+*4.修改tesseract 白名单
+
+​	*1.找到tesseract安装目录下  
+
+​	*2.进入到tessdata/configs/文件夹下 打开digits文件 
+
+​	*3.修改为：``tessedit_char_whitelist  1234567890``
+
+5.直接运行项目中start.py即可~
+
+**注：带*的步骤可省略，如果出现识别错误再操作**
 
 # 注意事项
 
