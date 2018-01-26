@@ -1,7 +1,7 @@
 # coding:utf-8
 import screenshot,os,time
 from PIL import Image
-import pytesseract
+import pytesseract 
 
 # w = 1080
 # h = 1920
@@ -14,7 +14,7 @@ def crop():
     '''
     for i in range(0, 49, 1):
         region = im.crop(h_loc[i])
-        # region.save("./test{}.png".format(i))
+        # region.save("./test{}.png".format(i))  测试时可打开，检测截图是否成功
         mem_pic["test{}".format(i)] = region
         img_handle(i)
 
@@ -53,12 +53,13 @@ def img_handle(index):
 
     if ltext == "4o" or ltext == "4O":
         ltext = "40"
+    # print ltext              # 测试时打开，检测是否识别成功
     key_list[ltext] = h_px[index]
 
 
 def start():
     for i in range(1,50,1):
-        print key_list[str(i)]
+        #print key_list[str(i)]
         touch(key_list[str(i)])
 
 
@@ -80,10 +81,12 @@ h_px = ((128,722),(262,722),(404,722),(540,722),(680,722),(820,722),(956,722),
         (128,1600),(262,1600),(404,1600),(540,1600),(680,1600),(820,1600),(956,1600))
 
 
-
+c_s_time = time.time()
 # 截图并上传
 screenshot.check_screenshot()
 screenshot.pull_screenshot()
+c_e_time = time.time()
+print '截图耗时{}s'.format(c_e_time - c_s_time)
 
 im = Image.open(r"./screenshot.png")
 
@@ -91,7 +94,14 @@ im = Image.open(r"./screenshot.png")
 mem_pic ={}
 # 存储数字与位置对应信息dict
 key_list = {}
+h_s_time = time.time()
 # 截图并处理
 crop()
+h_e_time = time.time()
+print '识别耗时{}s'.format(h_e_time - h_s_time)
+
+a_s_time = time.time()
 # 执行adb操作
 start()
+a_e_time = time.time()
+print 'adb操作耗时{}s'.format(a_e_time - a_s_time)
