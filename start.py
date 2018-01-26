@@ -14,7 +14,7 @@ def crop():
     '''
     for i in range(0, 49, 1):
         region = im.crop(h_loc[i])
-        # region.save("./test{}.png".format(i))  测试时可打开，检测截图是否成功
+        # region.save("./test{}.png".format(i))  #测试时可打开，检测截图是否成功
         mem_pic["test{}".format(i)] = region
         img_handle(i)
 
@@ -40,20 +40,8 @@ def img_handle(index):
     '''
     global key_list
     m = mem_pic["test{}".format(index)]
-    ltext = pytesseract.image_to_string(m, config="-psm 7")
-    # 防止将数字0识别为字母O
-    if ltext == "1o" or ltext == "1O":
-        ltext = "10"
-
-    if ltext == "2o" or ltext == "2O":
-        ltext = "20"
-
-    if ltext == "3o" or ltext == "3O":
-        ltext = "30"
-
-    if ltext == "4o" or ltext == "4O":
-        ltext = "40"
-    # print ltext              # 测试时打开，检测是否识别成功
+    ltext = pytesseract.image_to_string(m, config="-psm 7 digits")
+    print ltext              # 测试时打开，检测是否识别成功
     key_list[ltext] = h_px[index]
 
 
@@ -80,14 +68,14 @@ h_px = ((128,722),(262,722),(404,722),(540,722),(680,722),(820,722),(956,722),
         (128,1450),(262,1450),(404,1450),(540,1450),(680,1450),(820,1450),(956,1450),
         (128,1600),(262,1600),(404,1600),(540,1600),(680,1600),(820,1600),(956,1600))
 
-
+'''
 c_s_time = time.time()
 # 截图并上传
 screenshot.check_screenshot()
 screenshot.pull_screenshot()
 c_e_time = time.time()
 print '截图耗时{}s'.format(c_e_time - c_s_time)
-
+'''
 im = Image.open(r"./screenshot.png")
 
 # 截图存储dict
